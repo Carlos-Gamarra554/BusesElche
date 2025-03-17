@@ -1,17 +1,20 @@
-public class Linea {
-    private String codigo;
-    private int periodicidad;
+import java.util.HashMap;
+import java.util.Map;
 
-    public Linea(String codigo, int periodicidad) {
-        this.codigo = codigo;
-        this.periodicidad = periodicidad;
+class Linea {
+    String id;
+    Map<String, Integer> tiempos;
+
+    public Linea(String id) {
+        this.id = id;
+        this.tiempos = new HashMap<>();
     }
 
-    public String getCodigo() {
-        return codigo;
+    public void addTrayecto(String origen, String destino, int tiempo) {
+        tiempos.put(origen + "-" + destino, tiempo);
     }
 
-    public int getPeriodicidad() {
-        return periodicidad;
+    public Integer getTiempo(String origen, String destino) {
+        return tiempos.get(origen + "-" + destino);
     }
 }
